@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+
+    <button class="call-to-action">Boton 1</button>
+    <button class="call-to-action">Boton 2</button>
+    <button class="call-to-action">Boton 3</button>
+
     <script>
         const persona = {
             nombre: "Valeria",
@@ -64,6 +69,11 @@
         // Curing.
         const jhovanaCamina = caminar.bind(jhovana, 3000);
         jhovanaCamina("noroeste");
+
+        // Botones.
+        const botones = document.getElementsByClassName("call-to-action");
+        Array.prototype.forEach.call(botones, boton => { boton.onclick = () => alert("Hola, soy un boton") });
+
     </script>
 </body>
 </html>
