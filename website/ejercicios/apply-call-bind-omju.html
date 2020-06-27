@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const persona = {
+            nombre: "Valeria",
+            saludar: function() {
+                console.log("Hola, me llamo " + this.nombre);
+            }
+        }
+
+        persona.saludar();
+
+        const darSaludo = persona.saludar;
+        darSaludo();
+
+        const Persona = function(nombre, apellido) {
+            this.nombre = nombre;
+            this.apellido = apellido;
+        }
+
+        Persona.prototype.saludar = function() {
+            console.log(`Hola, yo soy ${this.nombre} ${this.apellido}`);
+        }
+
+        const valeria = new Persona("Valeria", "Becerra");
+        valeria.saludar();
+
+        function saludar() {
+            console.log(`Hola, mi nombre es ${this.nombre} ${this.apellido}`);
+        }
+
+        const valeria2 = {
+            nombre: "Valeria",
+            apellido: "Becerra"  
+        }
+
+        saludar.apply(valeria2);
+
+        function caminar(metros, direccion) {
+            console.log(`${this.nombre} camino ${metros} metros hacia ${direccion}.`);
+        }
+
+        const params = [800, "norte"]
+        caminar.apply(valeria2, params);
+
+        const daniela = {
+            nombre: "Daniela",
+            apeellido: "Zamudio"
+        }
+
+        caminar.call(daniela, 2000, "sureste");
+
+        const jhovana = {
+            nombre: "Jhovana",
+            apeellido: "Hernadez"
+        }
+
+        // Curing.
+        const jhovanaCamina = caminar.bind(jhovana, 3000);
+        jhovanaCamina("noroeste");
+    </script>
+</body>
+</html>
