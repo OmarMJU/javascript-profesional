@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // método 1 muy ineficiente.
+        // var spiderGirl = {
+        //     name: "Gwen Stacy"
+        // }
+
+        // spiderGirl.saludar = function() {
+        //     console.log(`Hola, yo soy ${this.name}`);
+        // }
+        
+        // spiderGirl.saludar();
+        
+        // var ironMan = {
+        //     name: "Anthony Start"
+        // }
+        
+        // ironMan.saludar = function() {
+        //     console.log(`Hola, yo soy ${this.name}`);
+        // }
+
+        // ironMan.saludar();
+
+        // Método 2 sigue siendo ineficiente.
+        // const Heroe = function(nombre) {
+        //     const heroe = {
+        //         nombre: nombre
+        //     };
+
+        //     heroe.saludar = function() {
+        //         console.log(`Hola, me llaman ${this.nombre}`);
+        //     }
+
+        //     return heroe;
+        // }
+
+        // const spiderGirl = Heroe("Gwen Stacy");
+        // spiderGirl.saludar();
+        
+        // const ironMan = Heroe("Anthony Start");
+        // ironMan.saludar();
+
+        // Método 3 sigue siendo ineficiente.
+        // const metodosHeroe = {
+        //     saludar: function() {
+        //         console.log(`Hola soy ${this.nombre}`);
+        //     }
+        // }
+
+        // const Heroe = function(nombre) {
+        //     const heroe = {
+        //         nombre: nombre
+        //     };
+
+        //     heroe.saludar = metodosHeroe.saludar;
+
+        //     return heroe;
+        // }
+
+        // const spiderGirl = Heroe("Gwen Stacy");
+        // spiderGirl.saludar();
+        
+        // const ironMan = Heroe("Anthony Start");
+        // ironMan.saludar();
+
+        // Método 4. Casi óptimo.
+        // const metodosHeroe = {
+        //     saludar: function() {
+        //         console.log(`Soy súperheroe ${this.nombre}!!`);
+        //     }
+        // }
+
+        // const Heroe = function(nombre) {
+        //     const heroe = Object.create(metodosHeroe);
+        //     heroe.nombre = nombre;
+        //     return heroe;
+        // }
+
+        // const spiderGirl = Heroe("Gwen Stacy");
+        // spiderGirl.saludar();
+        
+        // const ironMan = Heroe("Anthony Start");
+        // ironMan.saludar();
+        
+        // Método 5. Casi esta listo
+        // const Heroe = function(nombre) {
+        //     const heroe = Object.create(Heroe.prototype);
+        //     heroe.nombre = nombre;
+        //     return heroe;
+        // }
+
+        // Heroe.prototype.saludar = function() {
+        //     console.log(`Soy súperheroe ${this.nombre}!!`);
+        // }
+
+        // const spiderGirl = Heroe("Gwen Stacy");
+        // spiderGirl.saludar();
+        
+        // const ironMan = Heroe("Anthony Start");
+        // ironMan.saludar();
+
+        // Método 6.
+        const Heroe = function(nombre) {
+            // const heroe = Object.create(Heroe.prototype);
+            this.nombre = nombre;
+            // return heroe;
+        }
+
+        Heroe.prototype.saludar = function() {
+            console.log(`Soy tu nuevo ${this.nombre}!!`);
+        }
+
+        const spiderGirl = new Heroe("Gwen Stacy");
+        spiderGirl.saludar();
+        
+        const ironMan = new Heroe("Anthony Start");
+        ironMan.saludar();
+    </script>
+</body>
+</html>
