@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generadores</title>
+</head>
+<body>
+    <script>
+        // Ejemplo de generador básico.
+        function* fistGenerator() {
+            console.log("INICIA GENERADOR");
+            yield 1;
+            yield 2;
+            yield 3;
+            console.log("FINALIZA GENERADOR");
+            yield 4;
+        }
+
+        const gen = fistGenerator();
+        // gen.next();
+
+        // Ejemplo de generador con valor.
+        function* makeId() {
+            let id = 1;
+
+            while (true) {
+                yield id;
+                id += 1;
+            }
+        }
+        
+        const genId = makeId();
+
+        // Ejemplo de generador con reset.
+        function* makerIdReset() {
+            let id = 1;
+            let reset
+
+            while (true) {
+                reset = yield id;
+
+                if(reset) {
+                    id = 1;
+                } else {
+                    id += 1;
+                }
+            }
+        }
+
+        const genMakerRest = makerIdReset();
+
+        // Ejemplo de generador Fibonacci.
+        function* genFibonacci() {
+            let a = 1;
+            let b = 1;
+
+            while (true) {
+                const sumaNext = a + b;
+                a = b;
+                b = sumaNext;
+
+                yield sumaNext;
+            }
+        }
+
+        const fibonacci = genFibonacci();
+    </script>
+</body>
+</html>
