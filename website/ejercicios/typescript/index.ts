@@ -1,10 +1,15 @@
-console.log("Hola TypeScript");
-
-function add(a: number, b: number) {
-  return a + b;
-}
-
-const result = add(2, 4);
+/**
+ * Tipos de datos en TS
+ * Tipos:
+    boolean. Valor verdadero o falso.
+    number. Números.
+    string. Cadenas de texto.
+    string[]. Arreglo del tipo cadena de texto.
+    Array. Arreglo multi-tipo, acepta cadenas de texto o números.
+    enum. Es un tipo especial llamado enumeración.
+    any. Cualquier tipo.
+    object. Del tipo objeto.
+ */
 
 // Arreglos.
 let people: string[] = [];
@@ -36,15 +41,26 @@ comodin = { type: "WildCart" }
 // Objects.
 let someObject: object = { type: "Objeto" }
 
-/**
- * Tipos de datos en TS
- * Tipos:
-    boolean. Valor verdadero o falso.
-    number. Números.
-    string. Cadenas de texto.
-    string[]. Arreglo del tipo cadena de texto.
-    Array. Arreglo multi-tipo, acepta cadenas de texto o números.
-    enum. Es un tipo especial llamado enumeración.
-    any. Cualquier tipo.
-    object. Del tipo objeto.
- */
+// Funciones.
+function add(a: number, b: number): number {
+  return a + b;
+}
+const result = add(2, 4);
+console.log(result);
+
+
+function creaateAdder(a: number): (number) => number {
+  return function(b: number): number {
+    return a + b;
+  }
+}
+const adder = creaateAdder(4);
+const reAdder = adder(5);
+console.log(reAdder);
+
+// El signo de interrogación después del argumento y antes de los puntos indica que ese
+// argumento es opcional.
+function nameLastname(name: string, lastname?: string = ""): string {
+  return `Hola, mi nombre es ${name} ${lastname}.`;
+}
+console.log(nameLastname("Omar"));
