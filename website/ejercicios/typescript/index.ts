@@ -64,3 +64,21 @@ function nameLastname(name: string, lastname?: string = ""): string {
   return `Hola, mi nombre es ${name} ${lastname}.`;
 }
 console.log(nameLastname("Omar"));
+
+// Interfaces.
+interface Rectangulo {
+  alto: number;
+  ancho: number;
+}
+
+const rec: Rectangulo = {
+  alto: 10,
+  ancho: 15
+}
+
+function calcularArea(r: Rectangulo): number {
+  return r.alto * r.ancho;
+}
+
+const areaRec = calcularArea(rec);
+console.log(areaRec);
